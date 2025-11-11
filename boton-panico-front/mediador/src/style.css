@@ -1,10 +1,32 @@
+/* ============================================================================
+   VARIABLES GLOBALES (Tomadas del dashboard.css del usuario)
+   ============================================================================ */
+:root {
+    --theme-bg-body: #111827;
+    --theme-bg-container: #1f2937;
+    --theme-border-color: #374151;
+    --theme-primary-accent: #3b82f6;
+    --theme-primary-accent-hover: #2563eb;
+    --theme-text-primary: #d1d5db;
+    --theme-text-secondary: #9ca3af;
+    --theme-text-bright: #FFFFFF;
+    --theme-input-bg: #d1d5db;
+    --theme-input-text: #1f2937;
+    --border-radius: 8px;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.12);
+}
+
+/* ============================================================================
+   ESTILOS GENERALES Y LOGIN (Modificados al tema del Dashboard)
+   ============================================================================ */
+
 body {
     margin: 0;
     padding: 0;
-    font-family: Lato, sans-serif; /* Añadido sans-serif como fallback */
+    font-family: Lato;
     
-    /* CAMBIO: Fondo de gradiente azul/púrpura */
-    background: linear-gradient(135deg, #4e54c8 0%, #8f94fb 100%);
+    /* CAMBIO: Fondo oscuro del dashboard */
+    background: var(--theme-bg-body);
     
     background-size: cover;
     background-position: center;
@@ -16,37 +38,36 @@ body {
 }
 
 .login-container {
-    /* CAMBIO: Fondo oscuro semi-transparente */
-    background-color: rgba(10, 20, 40, 0.85);
+    /* CAMBIO: Fondo de contenedor del dashboard */
+    background-color: var(--theme-bg-container);
     
-    border-radius: 15px;
+    border-radius: var(--border-radius);
     padding: 25px 30px;
-    width: 320px; /* Un poco más ancho para las etiquetas */
+    width: 320px;
     max-width: 90%;
     text-align: center;
     
-    /* CAMBIO: Brillo azul (glow) y borde sutil */
-    box-shadow: 0 0 25px rgba(0, 150, 255, 0.7), 0 0 10px rgba(0, 150, 255, 0.5);
-    border: 1px solid rgba(0, 150, 255, 0.3);
+    /* CAMBIO: Sombra y borde del dashboard */
+    box-shadow: var(--shadow);
+    border: 1px solid var(--theme-border-color);
     
-    /* CAMBIO: Texto por defecto blanco */
-    color: white; 
+    /* CAMBIO: Texto por defecto */
+    color: var(--theme-text-primary); 
 }
 
 .login-container h1 {
-    /* CAMBIO: Color de texto */
-    color: #FFFFFF;
+    /* CAMBIO: Color primario del dashboard */
+    color: var(--theme-primary-accent);
     font-size: 2.5rem;
     margin-bottom: 10px;
 }
 
 .login-welcome {
-    /* CAMBIO: Color de texto */
-    color: #f0f0f0; /* Un blanco un poco más suave */
-    margin-bottom: 25px; /* Más espacio */
+    /* CAMBIO: Color de texto secundario */
+    color: var(--theme-text-secondary);
+    margin-bottom: 25px;
 }
 
-/* ¡NUEVO! Estilo para las etiquetas que añadimos en el HTML */
 label {
     display: block;
     text-align: left;
@@ -54,7 +75,8 @@ label {
     margin-bottom: 5px;
     font-size: 0.9rem;
     font-weight: bold;
-    color: #FFFFFF;
+    /* CAMBIO: Color de etiqueta */
+    color: var(--theme-text-primary);
 }
 
 input[type="text"], 
@@ -62,32 +84,29 @@ input[type="password"],
 input[type="email"] {
     width: 100%;
     padding: 12px;
-    
-    /* CAMBIO: quitamos margen superior, ya lo da el label */
     margin: 0 0 10px 0; 
-    
     box-sizing: border-box;
-    border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 1rem;
     
-    /* CAMBIO: Fondo claro y color de texto oscuro */
-    background-color: #f0f0f0;
-    color: #333;
+    /* CAMBIO: Estilo de input del dashboard */
+    background-color: var(--theme-input-bg);
+    color: var(--theme-input-text);
+    border: 1px solid var(--theme-border-color);
 }
 
 button {
     font-family: Lato, sans-serif;
     
-    /* CAMBIO: Gradiente gris/azul claro */
-    background: linear-gradient(to bottom, #f0f0f0, #d0d0d0);
+    /* CAMBIO: Botón primario del dashboard */
+    background: var(--theme-primary-accent);
     
-    margin-top: 20px; /* Más espacio arriba */
+    margin-top: 20px;
     margin-bottom: 10px;
     
-    /* CAMBIO: Color de texto oscuro */
-    color: #333;
-    font-weight: bold; /* Añadido */
+    /* CAMBIO: Color de texto de botón primario */
+    color: var(--theme-text-bright);
+    font-weight: bold;
     
     border: none;
     padding: 12px 20px;
@@ -96,14 +115,10 @@ button {
     font-size: 1rem;
     text-transform: uppercase;
     width: 100%;
-    transition: background 0.3s ease; /* Añadido para suavizar */
+    transition: background 0.3s ease;
 }
 
 button:hover {
-    /* CAMBIO: Hover más oscuro */
-    background: linear-gradient(to bottom, #e0e0e0, #c0c0c0);
+    /* CAMBIO: Hover de botón primario */
+    background: var(--theme-primary-accent-hover);
 }
-
-/* Se omiten los estilos para .forgot-password, .register-link, etc., 
-  ya que no están en el index.html del mediador.
-*/
