@@ -1,14 +1,8 @@
 // Configuración de API
 let API_URL;
 
-// Revisa si estamos en el servidor local
-if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-  // Estamos en desarrollo (tu PC)
-  API_URL = 'http://localhost:8000'; // O el puerto que uses para tu API local
-} else {
-  // Estamos en producción (Cloudflare Pages)
-  API_URL = 'https://api.isaa.xyz';
-}
+  API_URL = 'https://api.isaa.xyz';// O el puerto que uses para tu API local
+
 // Función para mostrar la vista de inicio de sesión
 function showLoginView() {
   document.getElementById("loginView").style.display = "block";

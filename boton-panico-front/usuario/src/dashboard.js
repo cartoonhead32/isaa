@@ -1,13 +1,8 @@
 let API_URL;
 
-// Revisa si estamos en el servidor local
-if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-  // Estamos en desarrollo (tu PC)
-  API_URL = 'http://localhost:8000'; // O el puerto que uses para tu API local
-} else {
+
   // Estamos en producción (Cloudflare Pages)
   API_URL = 'https://api.isaa.xyz';
-}
 
 // Variables de estado de la aplicación
 let activeReportId = null        // ID del reporte actualmente seleccionado
@@ -210,7 +205,7 @@ function makeFormReadOnly() {
   const formInputs = document.querySelectorAll("#detailed-form input, #detailed-form textarea")
   formInputs.forEach((input) => {
     input.disabled = true
-    input.style.backgroundColor = "#f5f5f5"
+    input.style.backgroundColor = "#fd1d5db"
     input.style.color = "#666"
   })
 
@@ -221,8 +216,7 @@ function makeFormReadOnly() {
     const infoMessage = document.createElement("div")
     infoMessage.id = "form-info-message"
     infoMessage.style.cssText = `
-      background: #e3f2fd;
-      border: 1px solid #2196f3;
+      border: 1px solid #1b66a3ff;
       border-radius: 4px;
       padding: 10px;
       margin-bottom: 15px;

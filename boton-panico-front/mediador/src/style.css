@@ -1,11 +1,14 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: Lato;
-    background-image: url('img/background.jpg');
-    background-size: cover;      /* Escala la imagen para cubrir toda la pantalla */
-    background-position: center; /* Centra la imagen */
-    background-repeat: no-repeat;/* Evita que la imagen se repita */
+    font-family: Lato, sans-serif; /* Añadido sans-serif como fallback */
+    
+    /* CAMBIO: Fondo de gradiente azul/púrpura */
+    background: linear-gradient(135deg, #4e54c8 0%, #8f94fb 100%);
+    
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,25 +16,45 @@ body {
 }
 
 .login-container {
-    background-color: white;
+    /* CAMBIO: Fondo oscuro semi-transparente */
+    background-color: rgba(10, 20, 40, 0.85);
+    
     border-radius: 15px;
-    /* CAMBIO: Padding vertical ligeramente reducido */
     padding: 25px 30px;
-    width: 300px; 
+    width: 320px; /* Un poco más ancho para las etiquetas */
     max-width: 90%;
     text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    
+    /* CAMBIO: Brillo azul (glow) y borde sutil */
+    box-shadow: 0 0 25px rgba(0, 150, 255, 0.7), 0 0 10px rgba(0, 150, 255, 0.5);
+    border: 1px solid rgba(0, 150, 255, 0.3);
+    
+    /* CAMBIO: Texto por defecto blanco */
+    color: white; 
 }
 
 .login-container h1 {
-    color: #8B0000;
+    /* CAMBIO: Color de texto */
+    color: #FFFFFF;
     font-size: 2.5rem;
     margin-bottom: 10px;
 }
 
 .login-welcome {
-    color: #8B0000;
-    margin-bottom: 20px;
+    /* CAMBIO: Color de texto */
+    color: #f0f0f0; /* Un blanco un poco más suave */
+    margin-bottom: 25px; /* Más espacio */
+}
+
+/* ¡NUEVO! Estilo para las etiquetas que añadimos en el HTML */
+label {
+    display: block;
+    text-align: left;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #FFFFFF;
 }
 
 input[type="text"], 
@@ -39,19 +62,33 @@ input[type="password"],
 input[type="email"] {
     width: 100%;
     padding: 12px;
-    margin: 5px 0; 
+    
+    /* CAMBIO: quitamos margen superior, ya lo da el label */
+    margin: 0 0 10px 0; 
+    
     box-sizing: border-box;
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 1rem;
+    
+    /* CAMBIO: Fondo claro y color de texto oscuro */
+    background-color: #f0f0f0;
+    color: #333;
 }
 
 button {
-    font-family: Lato;
-    background-color: #8B0000;
-    margin-top: 10px;
+    font-family: Lato, sans-serif;
+    
+    /* CAMBIO: Gradiente gris/azul claro */
+    background: linear-gradient(to bottom, #f0f0f0, #d0d0d0);
+    
+    margin-top: 20px; /* Más espacio arriba */
     margin-bottom: 10px;
-    color: white;
+    
+    /* CAMBIO: Color de texto oscuro */
+    color: #333;
+    font-weight: bold; /* Añadido */
+    
     border: none;
     padding: 12px 20px;
     border-radius: 4px;
@@ -59,93 +96,14 @@ button {
     font-size: 1rem;
     text-transform: uppercase;
     width: 100%;
+    transition: background 0.3s ease; /* Añadido para suavizar */
 }
 
 button:hover {
-    background-color: #700000;
+    /* CAMBIO: Hover más oscuro */
+    background: linear-gradient(to bottom, #e0e0e0, #c0c0c0);
 }
 
-.forgot-password, .register-link {
-    margin-top: 10px;
-    margin-bottom: 15px;
-    font-size: 0.9rem;
-    color: #666;
-    cursor: pointer;
-}
-
-.recovery-text {
-    color: #444;
-    font-size: 0.9rem;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.close-button {
-    margin-top: 10px;
-}
-
-.field-label {
-    text-align: left;
-    display: block;
-    margin-top: 15px;
-    font-size: 0.9rem;
-    color: #555;
-}
-
-/* Se aplica el margen más grande solo a las vistas que NO son de registro */
-#loginView input,
-#forgotView input {
-    margin: 8px 0;
-}
-
-#loginView, #forgotView, #confirmationView, #registerView {
-    display: none;
-}
-
-/* ---------------------------------------------- */
-/* Estilos específicos para el formulario de Registro */
-/* ---------------------------------------------- */
-
-/* CAMBIO: Margen del subtítulo reducido */
-#registerView .recovery-text {
-    margin-bottom: 15px;
-}
-
-/* 1. Define la fila de dos columnas */
-#registerView .form-row {
-    display: flex;
-    gap: 15px; /* Espacio entre columnas */
-    /* CAMBIO: Añadido un pequeño espacio debajo de cada fila */
-    margin-bottom: 5px; 
-}
-
-/* 2. Hace que cada grupo (label + input) ocupe la mitad */
-#registerView .form-group {
-    flex: 1; 
-    text-align: left;
-}
-
-/* 3. Compacta los márgenes y rellenos SÓLO en el registro */
-#registerView .field-label {
-    /* CAMBIO: Margen superior reducido */
-    margin-top: 10px; 
-    font-size: 0.85rem;
-}
-
-#registerView input[type="text"],
-#registerView input[type="password"],
-#registerView input[type="email"] {
-    padding: 10px; 
-    margin: 6px 0; 
-}
-
-/* 4. Ajusta los márgenes de los botones en el registro */
-#registerView button {
-    /* CAMBIO: Margen superior reducido */
-    margin-top: 15px;
-}
-
-#registerView .close-button {
-    /* CAMBIO: Margen superior reducido */
-    margin-top: 5px;
-}
+/* Se omiten los estilos para .forgot-password, .register-link, etc., 
+  ya que no están en el index.html del mediador.
+*/
