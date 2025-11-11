@@ -6,7 +6,7 @@ if (window.location.hostname === 'localhost' || window.location.hostname === '12
   API_URL = 'http://localhost:8000'; // O el puerto que uses para tu API local
 } else {
   // Estamos en producción (Cloudflare Pages)
-  API_URL = 'https://isaa-zaa9.onrender.com';
+  API_URL = 'https://api.isaa.xyz';
 }
 // Function to show login view
 function showLoginView() {
