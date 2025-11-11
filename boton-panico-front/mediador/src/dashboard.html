@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISAA - Panel de Casos</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-left">
+            <h2>ISAA</h2>
+        </div>
+        <div class="header-right">
+            <span id="username"></span> 
+            <span>|</span>
+            <button id="logout-button" class="logout-btn">Cerrar Sesión</button>
+        </div>
+    </header>
+
+    <div class="sidebar">
+        <ul class="nav-menu">
+            <li><a href="#reportes-activos" class="active">Casos Activos</a></li>
+        </ul>
+    </div>
+
+    <main id="main-content" class="main-content expanded">
+        <section id="reportes-activos" class="section active-section">
+            <div class="section-content">
+
+                <div id="panel-tabla-casos">
+                    <div class="header-panel" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                        <h2>Panel de Mediador - Casos Activos</h2>
+                        
+                    </div>
+                    
+                    <div id="errorFetch" class="error-message" style="display: none; margin-bottom: 1rem;"></div>
+                    
+                    <div id="reportes-table" class="reportes-table">
+                        </div>
+                </div>
+
+
+                <div id="panel-caso-unico" style="display: none;">
+                    <div class="header-panel" style="margin-bottom: 1.5rem;">
+                        <h2>Estás atendiendo un reporte</h2>
+                    </div>
+                    
+                    <div id="errorCasoActivo" class="error-message" style="display: none; margin-bottom: 1rem;"></div>
+
+                    <div class="caso-unico-container">
+                        <div class="info-caso">
+                            <h3>Detalles del Reporte</h3>
+                            <p><strong>ID de Reporte:</strong> <span id="caso-id">-</span></p>
+                            <p><strong>Ubicación:</strong> <span id="caso-ubicacion">-</span></p>
+                            <p><strong>Hora de Creación:</strong> <span id="caso-hora-creacion">-</span></p>
+                            <p><strong>Tu Hora de Asignación:</strong> <span id="caso-hora-asignacion">-</span></p>
+                        </div>
+                        
+                        <div class="info-caso">
+                            <h3>Detalles del Estudiante</h3>
+                            <p><strong>Nombre:</strong> <span id="caso-estudiante-nombre">-</span></p>
+                            <p><strong>Código:</strong> <span id="caso-estudiante-codigo">-</span></p>
+                            <p><strong>Correo:</strong> <span id="caso-estudiante-correo">-</span></p>
+                        </div>
+                    </div>
+
+                    <button id="btn-resolver-caso" class="btn-resolver">
+                        <i class="fas fa-check-circle"></i> Marcar como Resuelto (Finalizar Apoyo)
+                    </button>
+                </div>
+
+            </div>
+        </section>
+    </main>
+    
+    <div id="help-modal" class="modal">
+        <div class="modal-content help-modal">
+            <div class="modal-header">
+                <h3>Ayuda del Sistema</h3>
+                <span class="close-help-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <h4>Función del Operador</h4>
+                <p>Tu única función es recibir alertas activas y asignar un mediador (Apoyo) que acuda a la ubicación. Una vez asignado, el reporte desaparece de tu vista.</p>
+                
+                <h4>Flujo de Casos (FIFO)</h4>
+                <ul>
+                    <li><strong>Activo:</strong> Reporte recibido, esperando asignación.</li>
+                    <li><strong>Pendiente:</strong> Reporte asignado a un mediador.</li>
+                    <li><strong>Completado:</strong> El usuario cerró el caso.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="help-icon">
+            <a href="#" id="help-button"><i class="fas fa-question-circle"></i></a>
+        </div>
+    </footer>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

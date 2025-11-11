@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISAA - Sistema de Acceso</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="login-container">
+            <h1>ISAA</h1>
+            <p class="login-welcome">¡Bienvenido a ISAA!</p>
+            
+        <div id="loginView" style="display: block;">
+            
+            <input type="text" id="codigo" placeholder="Código UDG">
+            <input type="password" id="password" placeholder="Contraseña">
+            
+            <button id="loginButton" onclick="login()">INGRESAR</button>
+            <p class="register-link" onclick="showRegisterView()">Registrarse</p>
+        </div>
+        
+        <div id="forgotView">
+            <p class="recovery-text">Para reajustar su contraseña, ingrese su dirección de correo electrónico. Le enviaremos un email con instrucciones para poder acceder de nuevo.</p>
+            
+            <div class="field-label">Correo electrónico</div>
+            <input type="email" id="email">
+            
+            <button id="recoveryButton" onclick="sendRecovery()">ENVIAR CORREO</button>
+            <button class="close-button" onclick="showLoginView()">CANCELAR</button>
+        </div>
+        
+        <div id="registerView">
+            <p class="recovery-text">Complete el formulario para crear una nueva cuenta</p>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <div class="field-label">Nombre</div>
+                    <input type="text" id="newNombre">
+                </div>
+                <div class="form-group">
+                    <div class="field-label">Apellido</div>
+                    <input type="text" id="newApellido">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <div class="field-label">Código UDG</div>
+                    <input type="text" id="newCodigo">
+                </div>
+                <div class="form-group">
+                    <div class="field-label">Correo electrónico</div>
+                    <input type="email" id="newEmail">
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <div class="field-label">Contraseña</div>
+                    <input type="password" id="newPassword">
+                </div>
+                <div class="form-group">
+                    <div class="field-label">Confirmar contraseña</div>
+                    <input type="password" id="confirmPassword">
+                </div>
+            </div>
+            
+            <button id="registerButton" onclick="register()">REGISTRARSE</button>
+            <button class="close-button" onclick="showLoginView()">CANCELAR</button>
+        </div>
+        
+        <div id="confirmationView">
+            <p class="recovery-text">Las instrucciones para reestablecer su contraseña se han enviado a su correo electrónico. Revise su bandeja de entrada, si no encuentra el correo, por favor, revise la carpeta "Spam".</p>
+            
+            <button class="close-button" onclick="showLoginView()">CERRAR</button>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>

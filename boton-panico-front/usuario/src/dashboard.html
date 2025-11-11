@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISAA - Panel de usuario</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-left">
+            <button id="sidebar-toggle"><i class="fas fa-bars"></i></button>
+            <h2>ISAA</h2>
+        </div>
+        <div class="header-right">
+            <span id="autoupdate"></span>
+            <span id="username"></span>
+            <span>|</span>
+            <button class="logout-btn" onclick="logout()">Cerrar Sesión</button>
+        </div>
+    </header>
+
+    <div class="sidebar closed">
+        <ul class="nav-menu">
+            <li><a href="#home" class="active">Inicio</a></li>
+            <li><a href="#preguntas-frecuentes">Preguntas frecuentes</a></li>
+            <li><a href="#avisos-de-privacidad">Avisos de privacidad</a></li>
+            <li><a href="#terminos-y-condiciones">Términos y condiciones</a></li>
+            <li><a href="#acerca-de">Acerca de nosotros</a></li>
+            <li><a href="#contactanos">Contáctanos</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <section id="home" class="section active-section">
+            <div class="section-content">
+                <h2 id="welcome-message">¡BIENVENIDO, USUARIO(A)!</h2>
+                
+                <div class="dashboard">
+                    <div class="panel-container">
+                        <div class="panic-button-panel">
+                            <h3>Botón de pánico</h3>
+                            <div class="big-button-container">
+                                <button id="panic-button" class="big-button">AYUDA</button>
+                            </div>
+                        </div>
+                        
+                        <div class="reports-panel">
+                            <h3>Reportes</h3>
+                            <div id="reports-list">
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="preguntas-frecuentes" class="section">
+            <div class="section-content">
+                <h2>Preguntas Frecuentes</h2>
+                
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header">¿Qué es ISAA?</div>
+                        <div class="accordion-content">
+                            <p>Las siglas ISAA significan "Instrumento de Seguridad Anti Acoso", y es un sistema de reporte de emergencias diseñado para la comunidad universitaria. Permite enviar alertas rápidas a los administradores capacitados para cuando te encuentres en una situación de riesgo o presencies algún incidente que requiera atención.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">¿Cómo sabré que mi denuncia estudiantil está siendo revisada?</div>
+                        <div class="accordion-content">
+                            <p>En la pantalla de Inicio de tu aplicación, busca el reporte que quieres revisar y observa la parte de "Estado", si sale "Pendiente", quiere decir que está siendo revisada .</p>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+        </section>
+
+        <section id="avisos-de-privacidad" class="section">
+            <div class="section-content">
+                <h2>Aviso de Privacidad</h2>
+                <div class="legal-content">
+                    </div>
+            </div>
+        </section>
+
+        <section id="terminos-y-condiciones" class="section">
+            <div class="section-content">
+                <h2>Términos y Condiciones</h2>
+                <div class="legal-content">
+                    </div>
+            </div>
+        </section>
+
+        <section id="acerca-de" class="section">
+            <div class="section-content">
+                <h2>Acerca de Nosotros</h2>
+                <div class="about-container">
+                    </div>
+            </div>
+        </section>
+
+        <section id="contactanos" class="section">
+            <div class="section-content">
+                <h2>Contáctanos</h2>
+                <div class="contact-container">
+                    </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="report-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Nuevo Reporte</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="reportForm">
+                    <div class="form-group">
+                        <label for="ubicacion">Ubicación:</label>
+                        <textarea id="ubicacion" name="ubicacion" placeholder="Ej: Patio central, Baños Edificio F..." rows="5" required></textarea>
+                        <span id="errorUbicacion" class="error-message"></span>
+                    </div>
+                    <button type="submit" class="submit-button">Enviar Reporte</button>
+                    <span id="exitoEnvio" class="success-message"></span>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="detailed-form-modal" class="modal">
+        <div class="modal-content detailed-form-modal-content">
+            <div class="modal-header">
+                <h2>FORMULARIO DE SITUACIÓN</h2> <span class="close-detailed-modal">&times;</span>
+            </div>
+            
+            <div class="form-description">
+                <strong>Ubicación Reportada:</strong> <span id="form-description-text"></span>
+            </div>
+            
+            <form id="detailed-form" class="detailed-form">
+                <div class="form-row">
+                    <div class="form-group full-width">
+                        <label for="descripcion-detallada">Descripción de la situación (Opcional)</label>
+                        <p style="font-size: 0.8rem; color: #666; margin-bottom: 10px;">
+                            Describe lo sucedido. Esta información es opcional y solo será vista por el administrador.
+                            Si no deseas agregar nada, solo presiona "Completar Reporte".
+                        </p>
+                        <textarea id="descripcion-detallada" name="descripcion-detallada" rows="6"></textarea>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Completar Reporte</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <div id="help-modal" class="modal">
+        <div class="modal-content help-modal">
+            <div class="modal-header">
+                <h3>Ayuda del Sistema</h3>
+                <span class="close-help-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <h4>Navegación</h4>
+                <p>Utiliza el menú lateral para navegar entre las diferentes secciones de la aplicación.</p>
+                
+                <h4>Botón de Pánico</h4>
+                <p>El botón rojo "AYUDA" en la pantalla principal se usa para reportar una emergencia. Se te pedirá tu ubicación.</p>
+                
+                <h4>Reportes</h4>
+                <p>En la sección de reportes puedes ver el estado de tus reportes enviados:</p>
+                <ul>
+                    <li><strong>Activo:</strong> Tu reporte fue recibido y está esperando ser asignado a un mediador. El botón estará deshabilitado.</li>
+                    <li><strong>Pendiente:</strong> Un mediador ya fue asignado y está en proceso de atender tu reporte. El botón seguirá deshabilitado.</li>
+                    <li><strong>Pendiente Formulario:</strong> El mediador ha resuelto tu situación. El botón "Concluir Reporte" está ahora activo para que puedas (opcionalmente) describir lo sucedido y cerrar el caso.</li>
+                    <li><strong>Completado:</strong> El caso ha sido cerrado. Puedes ver la información que enviaste.</li>
+                </ul>
+                
+                <h4>Formulario</h4>
+                <p>Cuando un mediador resuelva tu caso, el estado cambiará a "Pendiente Formulario" y se activará el botón "Concluir Reporte".
+                   Presiónalo, describe opcionalmente lo sucedido y presiona "Completar Reporte" para finalizar.
+                </p>
+                
+                <h4>¿Necesitas más ayuda?</h4>
+                <p>Si tienes dudas adicionales, puedes dirigirte a la sección de "Preguntas Frecuentes" o contactar con soporte a través de la sección "Contáctanos".</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="help-icon">
+            <a href="#" id="help-button"><i class="fas fa-question-circle"></i></a>
+        </div>
+    </footer>
+    
+    <script src="dashboard.js"></script>
+</body>
+</html>

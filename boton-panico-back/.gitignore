@@ -1,0 +1,10 @@
+src/.vscode/
+src/.dockerignore
+src/comando_API.txt
+.env
+secretkey.py
+db/
+*.db
+*.sqlite
+*.sqlite3
+__pycache__/
