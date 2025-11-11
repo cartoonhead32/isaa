@@ -509,6 +509,89 @@ footer {
 }
 
 @media (max-width: 768px) {
+
+  /* ========================================
+     ESTILOS DE TABLA A TARJETA (MÓVIL)
+     ======================================== */
+
+  /* 1. Ocultar la cabecera de la tabla */
+  .reportes-table thead {
+    display: none;
+  }
+
+  /* 2. Convertir la tabla y el cuerpo en bloques */
+  .reportes-table table,
+  .reportes-table tbody {
+    display: block;
+    width: 100%;
+  }
+
+  /* 3. Convertir la FILA (tr) en la TARJETA */
+  .reportes-table tr {
+    display: block;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--theme-border-color);
+    box-shadow: var(--shadow);
+    overflow: hidden; /* Importante para los bordes */
+  }
+
+  /* 4. Convertir la CELDA (td) en una fila dentro de la tarjeta */
+  .reportes-table td {
+    display: block;
+    width: 100%;
+    border: none; /* Quitamos bordes de celda */
+    border-bottom: 1px solid var(--theme-border-color); /* Separador interno */
+    padding: 0.75rem 1rem;
+    text-align: left; /* Alineamos el valor a la izquierda */
+  }
+  
+  /* 5. Quitar el separador de la última "fila" (el botón) */
+  .reportes-table tr td:last-child {
+    border-bottom: none;
+  }
+
+  /* 6. Añadir los LABELS (ID, FECHA, etc.) usando ::before */
+  .reportes-table td::before {
+    content: 'ETIQUETA'; /* Se sobrescribe abajo */
+    font-weight: bold;
+    color: var(--theme-text-secondary);
+    display: block; /* Pone el label encima del valor */
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+  }
+
+  /* 7. Asignar el contenido de cada label */
+  .reportes-table td:nth-of-type(1)::before { content: 'ID'; }
+  .reportes-table td:nth-of-type(2)::before { content: 'FECHA'; }
+  .reportes-table td:nth-of-type(3)::before { content: 'HORA'; }
+  .reportes-table td:nth-of-type(4)::before { content: 'ESTUDIANTE'; }
+  .reportes-table td:nth-of-type(5)::before { content: 'UBICACION'; }
+
+  /* 8. Estilos especiales para la celda de ACCIONES */
+  .reportes-table td:nth-of-type(6) {
+    padding: 1rem; /* Más espacio para el botón */
+  }
+  
+  /* 9. Ocultar el label "ACCIONES:" (no es necesario) */
+  .reportes-table td:nth-of-type(6)::before {
+    display: none;
+  }
+
+  /* 10. Hacer que el botón ocupe todo el ancho de la tarjeta */
+  .reportes-table .action-dropdown-btn {
+    width: 100%;
+  }
+
+  /* 11. (Opcional) Asegurar que la ubicación se ajuste si es larga */
+  .reportes-table td:nth-of-type(5) {
+      word-wrap: break-word;
+      white-space: normal;
+  }
+
   .main-content {
     margin-left: 0;
     padding: 1rem;
@@ -573,3 +656,4 @@ footer {
 @media (max-width: 480px) {
   /* ... */
 }
+
