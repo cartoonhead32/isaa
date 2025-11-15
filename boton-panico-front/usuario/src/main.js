@@ -3,7 +3,7 @@ let API_URL;
 // Revisa si estamos en el servidor local
 
   // Estamos en producción (Cloudflare Pages)
-  API_URL = 'https://isaa-5m3t.onrender.com';
+  API_URL = 'https://api.isaa.xyz';
 
 // Function to show login view
 function showLoginView() {
