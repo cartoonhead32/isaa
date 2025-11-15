@@ -5,7 +5,7 @@ let API_URL;
 
 
   // Estamos en producción (Cloudflare Pages)
-  API_URL = 'https://isaa-5m3t.onrender.com';
+  API_URL = 'https://api.isaa.xyz';
 // --- VARIABLES DE ESTADO ---
 let datosActuales = []
 // 'mediadoresDisponibles' y 'activeReportId' ya no son necesarios para esto
