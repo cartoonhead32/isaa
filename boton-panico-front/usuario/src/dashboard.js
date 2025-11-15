@@ -2,7 +2,7 @@ let API_URL;
 
 
   // Estamos en producción (Cloudflare Pages)
-  API_URL = 'https://isaa-5m3t.onrender.com';
+  API_URL = 'https://api.isaa.xyz';
 
 // Variables de estado de la aplicación
 let activeReportId = null        // ID del reporte actualmente seleccionado
