@@ -1,7 +1,7 @@
 // Configuración de API
 let API_URL;
 
-  API_URL = 'https://isaa-5m3t.onrender.com';// O el puerto que uses para tu API local
+  API_URL = 'https://api.isaa.xyz';// O el puerto que uses para tu API local
 
 // Función para mostrar la vista de inicio de sesión
 function showLoginView() {
